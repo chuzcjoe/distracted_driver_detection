@@ -1,0 +1,25 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES: '4,5'
+DATASET:
+  NAME: 'VOC0712'
+  SUB_DIR: 'VOCdevkit'
+  TRAIN_SETS: (('2007', 'trainval'), ('2012', 'trainval'))
+#  TEST_SETS:  (('2007','test8'), )
+  TEST_SETS:  (('2007','test'), )
+  NUM_CLASSES: 20
+  TRAIN_BATCH_SIZE: 32
+  EVAL_BATCH_SIZE: 32
+  NUM_WORKERS: 8
+
+MODEL:
+  SSD_TYPE: 'SSD'
+  PRETRAIN_MODEL: 'pretrain/ssd_vgg16_voc_120000.pth'
+
+TRAIN:
+  MAX_ITER: 10000
+  EVAL_ITER: 1000
+  SAVE_ITER: 1000
+  OPTIMIZER:
+    LR: 1e-3
+#  LR_SCHEDULER:
+#    STEPS: [30, 60]

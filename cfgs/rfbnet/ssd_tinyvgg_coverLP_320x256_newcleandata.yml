@@ -1,0 +1,56 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES: "'0'"
+  NET_CPUS: [0,]
+  LOSS_GPU: 0
+
+LOG:
+  SHOW_PR_SCALAR: False
+  SHOW_MAXCONF_BOX: True
+
+DATASET:
+  NAME: 'TEMP_LP'
+  SUB_DIR: ''
+  CLASSES_NAME: ('poi_water','poi_phone','poi_palm','poi_face')
+  
+  DATASET_DIR: '/train/trainset/1/DMS/'
+  TRAIN_SETS: (('train', 'new_train.txt'),)
+  VAL_DATASET_DIR: '/train/trainset/1/DMS/'
+  TEST_SETS: (('test', 'new_test.txt'),)
+  
+  NUM_CLASSES: 4
+  IMAGE_SIZE: (144, 256)
+  EVAL_BATCH_SIZE: 16
+  TRAIN_BATCH_SIZE: 32
+  NUM_WORKERS: 8
+
+MODEL:
+  BASE: tiny_vgg16
+  TYPE: 'SSD'
+  LITE: False
+  PRETRAIN_MODEL: ''  #'../../../../weights/face/ssd_tinyvgg_coverLP_320x256_newcleandata/ssd_tinyvgg_coverLP_320x256_newcleandata_100000.pth'
+  STEPS: [4,8,16]
+  MIN_SIZES: [[8,12],[16,22,28],[32,44,62,86]]
+  #MIN_SIZES: [[8,12],[16,22],[32,44,62,86]]
+  MAX_SIZES: []
+  ASPECT_RATIOS: [[0.3,0.5,1.3,2.5,3.3],[0.3,0.5,1.3,2.5,3.3],[0.3,0.5,1.3,2.5,3.3]]
+  CLIP: False
+  FLIP: False
+  SSD:
+    EXTRA_CONFIG: [[15, 22 ,29], [64, 128, 256]]
+  INIT_WEIGHTS: 'xavier'
+
+TRAIN:
+  MAX_ITER: 30000
+  EVAL_ITER: 2000
+  SAVE_ITER: 5000
+  LOG_LOSS_ITER: 20
+  WARMUP_EPOCH: 5
+
+  OPTIMIZER:
+    LR: 1e-2
+  LR_SCHEDULER:
+    STEPS: (7000, 12000, 17000, 20000, 25000)
+
+LOSS:
+  OVERLAP_THRESHOLD: 0.5
+  NEG_OVERLAP: 0.3

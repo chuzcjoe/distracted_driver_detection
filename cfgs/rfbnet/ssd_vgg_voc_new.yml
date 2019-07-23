@@ -1,0 +1,39 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES:  "'0'" #"'0,1,2,3'"
+  NET_CPUS: [0,]
+  LOSS_GPU: 0
+
+LOG:
+  SHOW_PR_SCALAR: False
+
+DATASET:
+  NAME: 'VOC0712'
+  SUB_DIR: 'VOCdevkit'
+  CLASSES_NAME: ('aeroplane', 'bicycle', 'bird', 'boat',
+    'bottle', 'bus', 'car', 'cat', 'chair',
+    'cow', 'diningtable', 'dog', 'horse',
+    'motorbike', 'person', 'pottedplant',
+    'sheep', 'sofa', 'train', 'tvmonitor')
+
+  DATASET_DIR: '/home/maolei/data/VOCdevkit/'
+  TRAIN_SETS: (('2007', 'trainval'), ('2012', 'trainval'), )
+  VAL_DATASET_DIR: '/home/maolei/data/VOCdevkit/'
+  TEST_SETS:  (('2007', 'test_100'), )
+  NUM_CLASSES: 20
+  EVAL_BATCH_SIZE: 8 #32
+  TRAIN_BATCH_SIZE: 8
+  NUM_WORKERS: 4
+
+AUGMENTATION:
+  NAME: 'SSD'
+
+MODEL:
+  BASE: vgg16
+  TYPE: 'SSD'
+  PRETRAIN_MODEL: '../../weights/vgg16_reducedfc.pth'
+  SSD:
+    EXTRA_CONFIG: [[22, 34, 'S', 'S', 'S', ''], [512, 1024, 512, 256, 256, 256]]
+
+TRAIN:
+  EVAL_ITER: 10000
+  WARMUP_EPOCH: 6

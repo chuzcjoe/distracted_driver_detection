@@ -1,0 +1,21 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES:  '0,1,2,3'
+
+DATASET:
+  NAME: 'VOC0712'
+  SUB_DIR: 'VOCdevkit'
+  TRAIN_SETS: (('2007', 'trainval'), ('2012', 'trainval'), )
+  TEST_SETS:  (('2007', 'test'), )
+  NUM_CLASSES: 20
+  EVAL_BATCH_SIZE: 32
+
+AUGMENTATION:
+  NAME: 'SSD'
+
+MODEL:
+  SSD_TYPE: 'SSD'
+  SSD:
+    EXTRA_CONFIG: (256, 'S', 512, 128, 'S', 256, 128, 256, 128, 256)
+
+TRAIN:
+  WARMUP_EPOCH: 0

@@ -1,0 +1,13 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES:  '0,1,2,3'
+DATASET:
+  NAME: 'VOC0712'
+  SUB_DIR: 'VOCdevkit'
+  TRAIN_SETS: (('2007', 'trainval'), ('2012', 'trainval'), )
+  TEST_SETS:  (('2007', 'test'), )
+  NUM_CLASSES: 20
+
+MODEL:
+  SSD_TYPE: 'FPN'
+  FPN:
+    EXTRA_CONFIG: ((22, 34, 'S', 'S', '', ''), (512, 1024, 512, 256, 256, 256))

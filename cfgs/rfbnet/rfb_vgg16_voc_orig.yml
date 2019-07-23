@@ -1,0 +1,29 @@
+GENERAL:
+  CUDA_VISIBLE_DEVICES:  '0'
+
+DATASET:
+  NAME: 'VOC0712'
+  SUB_DIR: 'VOCdevkit'
+  TRAIN_SETS: (('2007', 'trainval'), ('2012', 'trainval'), )
+  TEST_SETS:  (('2007', 'test'), )
+  NUM_CLASSES: 20
+  EVAL_BATCH_SIZE: 32
+  TRAIN_BATCH_SIZE: 32
+
+AUGMENTATION:
+  NAME: 'SSD'
+
+MODEL:
+  SSD_TYPE: 'RFB'
+  SSD:
+    EXTRA_CONFIG: (256, 'S', 512, 128, 'S', 256, 128, 256, 128, 256)
+  ASPECT_RATIOS: ((2,3), (2, 3), (2, 3), (2, 3), (2, ), (2, ))
+
+TRAIN:
+  MAX_ITER: 140000
+  EVAL_ITER: 5000
+  SAVE_ITER: 5000
+  OPTIMIZER:
+    LR: 4e-3
+  LR_SCHEDULER:
+    STEPS: (80000, 110000, 130000)
