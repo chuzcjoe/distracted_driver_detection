@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Pytorch SSD Series
 ## Support Arc:
 * SSD [SSD: Single Shot Multibox  Detector](https://arxiv.org/abs/1512.02325)
@@ -36,3 +37,7 @@ python train.py --cfg_name cfgs/rfbnet/ssd_vgg16_voc_new.yml
 
 ### EVAL
 python eval.py --cfg_name cfgs/rfbnet/ssd_vgg16_voc_new.yml --trained_model ../../weights/rfbnet/ssd_vgg16_voc_new/ssd_vgg16_voc_new_200000.pth
+=======
+# DMS_detection
+
+>>>>>>> 80fd6302cfd500c2f6d8d94678223d6505ba7d2e
