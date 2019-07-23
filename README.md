@@ -8,3 +8,4 @@ python eval.py --cfg_name cfgs/rfbnet/ssd_vgg16_voc_new.yml --trained_model ../.
 python test.py --cfg_name res10_face_t --job_group face --trained_model ./weights/face/res10_face_t/res10_face_t_20000dark86.9.pth --test_path ./test_imgs --vis 1
 
 # Results
+![image](https://github.com/chuzcjoe/dms_classification/raw/master/pr_curve.jpg)
